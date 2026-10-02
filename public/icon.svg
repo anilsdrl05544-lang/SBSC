@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#172554" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Rounded App Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+
+  <!-- Shield Border -->
+  <path d="M256 64 C350 64 416 96 416 96 V256 C416 352 336 416 256 448 C176 416 96 352 96 256 V96 C96 96 162 64 256 64 Z" 
+        fill="none" stroke="url(#goldGrad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" filter="url(#shadow)" />
+
+  <!-- Inner Shield Fill -->
+  <path d="M256 80 C338 80 398 108 398 108 V252 C398 338 326 396 256 426 C186 396 114 338 114 252 V108 C114 108 174 80 256 80 Z" 
+        fill="#1e3a8a" fill-opacity="0.5" />
+
+  <!-- Graduation Cap -->
+  <path d="M256 140 L360 190 L256 240 L152 190 Z" fill="url(#goldGrad)" />
+  <path d="M200 216 V270 C200 286 225 300 256 300 C287 300 312 286 312 270 V216" fill="none" stroke="url(#goldGrad)" stroke-width="8" />
+  <path d="M340 200 V270 L348 278" stroke="url(#goldGrad)" stroke-width="6" stroke-linecap="round" />
+
+  <!-- School Initials SBSC -->
+  <text x="256" y="360" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" fill="#ffffff" letter-spacing="4">
+    SBSC
+  </text>
+  <text x="256" y="390" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="700" font-size="16" fill="#fde047" letter-spacing="3">
+    PUBLIC SCHOOL
+  </text>
+</svg>

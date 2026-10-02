@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Connection test document
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+
+    // School partition and all nested collections for students, teachers, fees, attendance, settings, and sync bundles
+    match /schools/{schoolId} {
+      allow read, write: if true;
+
+      match /{subcollection=**} {
+        allow read, write: if true;
+      }
+    }
+
+    // Catch-all fallback for school collections
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

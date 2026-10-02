@@ -1,0 +1,6 @@
+{
+  "name": "SBSC Public School Management",
+  "description": "Comprehensive School Management System for SBSC Public School, Bairwa Nankar, Siddharthnagar. Includes student admissions, fees collection, attendance fine paid & waiver tracking, conveyance & transport lists, attendance, exams & marksheets, homework, notices, role-based access, and professional A4 PDF reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

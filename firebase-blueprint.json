@@ -1,0 +1,121 @@
+{
+  "entities": {
+    "SchoolSettings": {
+      "title": "SchoolSettings",
+      "description": "General settings, contact information, branding and academic sessions for the school",
+      "type": "object",
+      "properties": {
+        "schoolName": { "type": "string", "description": "Official school name" },
+        "address": { "type": "string", "description": "School address" },
+        "phone": { "type": "string", "description": "Official contact number" },
+        "email": { "type": "string", "description": "School email address" },
+        "academicSession": { "type": "string", "description": "Current academic year session" },
+        "upiId": { "type": "string", "description": "School UPI ID for fee payments" }
+      },
+      "required": ["schoolName", "phone", "academicSession"]
+    },
+    "Student": {
+      "title": "Student",
+      "description": "Student enrollment record with personal and academic details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique student identifier" },
+        "admissionNo": { "type": "string", "description": "Official admission number" },
+        "fullName": { "type": "string", "description": "Full name of the student" },
+        "classId": { "type": "string", "description": "Enrolled class identifier" },
+        "guardianPhone": { "type": "string", "description": "Primary parent contact number" },
+        "status": { "type": "string", "description": "Active or Inactive enrollment status" }
+      },
+      "required": ["id", "admissionNo", "fullName", "classId", "status"]
+    },
+    "Teacher": {
+      "title": "Teacher",
+      "description": "Faculty staff member profile with employment credentials",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique teacher identifier" },
+        "empId": { "type": "string", "description": "Teacher employee code" },
+        "name": { "type": "string", "description": "Full name of the teacher" },
+        "phone": { "type": "string", "description": "Contact phone number" }
+      },
+      "required": ["id", "empId", "name"]
+    },
+    "ClassInfo": {
+      "title": "ClassInfo",
+      "description": "Grade level or section classroom info",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Class identifier" },
+        "name": { "type": "string", "description": "Class name, e.g. Class 10" },
+        "section": { "type": "string", "description": "Section identifier" }
+      },
+      "required": ["id", "name"]
+    },
+    "FeePayment": {
+      "title": "FeePayment",
+      "description": "Fee receipt transaction logged for a student",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Receipt transaction ID" },
+        "receiptNo": { "type": "string", "description": "Unique formatted receipt number" },
+        "studentId": { "type": "string", "description": "Reference student ID" },
+        "amountPaid": { "type": "number", "description": "Total amount paid in INR" },
+        "date": { "type": "string", "description": "Payment date ISO string" }
+      },
+      "required": ["id", "receiptNo", "studentId", "amountPaid", "date"]
+    },
+    "AttendanceRecord": {
+      "title": "AttendanceRecord",
+      "description": "Daily student attendance record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Attendance log ID" },
+        "studentId": { "type": "string", "description": "Student identifier" },
+        "date": { "type": "string", "description": "Date of attendance" },
+        "status": { "type": "string", "description": "Present, Absent, or Late" }
+      },
+      "required": ["id", "studentId", "date", "status"]
+    },
+    "SchoolDataBundle": {
+      "title": "SchoolDataBundle",
+      "description": "Complete consolidated online database synchronization bundle for the school",
+      "type": "object",
+      "properties": {
+        "lastUpdated": { "type": "string", "description": "Timestamp of last online cloud synchronization" },
+        "version": { "type": "number", "description": "Data synchronization version" },
+        "schoolId": { "type": "string", "description": "Unique school partition key" }
+      },
+      "required": ["lastUpdated", "version", "schoolId"]
+    }
+  },
+  "firestore": {
+    "/schools/{schoolId}/settings/current": {
+      "schema": "SchoolSettings",
+      "description": "School settings, contact details, and session configuration"
+    },
+    "/schools/{schoolId}/students/{studentId}": {
+      "schema": "Student",
+      "description": "Enrolled student records"
+    },
+    "/schools/{schoolId}/teachers/{teacherId}": {
+      "schema": "Teacher",
+      "description": "School teacher and faculty staff profiles"
+    },
+    "/schools/{schoolId}/classes/{classId}": {
+      "schema": "ClassInfo",
+      "description": "Class and section configurations"
+    },
+    "/schools/{schoolId}/fees/{feeId}": {
+      "schema": "FeePayment",
+      "description": "Student fee transaction receipts"
+    },
+    "/schools/{schoolId}/attendance/{attendanceId}": {
+      "schema": "AttendanceRecord",
+      "description": "Daily attendance logs"
+    },
+    "/schools/{schoolId}/sync/bundle": {
+      "schema": "SchoolDataBundle",
+      "description": "Consolidated high-speed cloud sync state for instant sharing across all devices"
+    }
+  }
+}
